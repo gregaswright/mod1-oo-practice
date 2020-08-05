@@ -17,7 +17,7 @@ class Patient
     
     def self.inquire_appt_ready
         print "The doctor will be ready soon."
-        Patient.all.each {|patients| patients.impatience += 1}
+        increase_impatience
         #should print that the doctor will be ready soon and increase patient impatience by 1
     end
 
