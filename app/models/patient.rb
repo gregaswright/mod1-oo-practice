@@ -1,14 +1,34 @@
 class Patient
 
-    attr_accessor :name, :age
+    attr_accessor :name, :age, :impatience 
 
-    def initialize(name, age)
+    @@all = []
+
+    def initialize(name, age, impatience = 0)
         @name = name
         @age = age
+        @impatience = impatience
+        @@all << self
     end
+
+    def self.all
+        @@all
+    end
+    
+    def self.inquire_appt_ready
+        print "The doctor will be ready soon."
+        Patient.all.each {|patients| patients.impatience += 1}
+        #should print that the doctor will be ready soon and increase patient impatience by 1
+    end
+
+private
+
+    def self.increase_impatience
+        Patient.all.each {|patients| patients.impatience += 1}
+
+        #should be a private method that increases impatience by 1 
+    end
+
 
 end
 
-jim = Patient.new("Jim", 25)
-sarah = Patient.new("Sarah", 15)
-tom = Patient.new("Tom", 45)
