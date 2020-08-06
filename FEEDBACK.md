@@ -13,3 +13,8 @@ Looks very clean and no extra code written - good job!
         @impatience = 0
         @@all << self
     end
+
+3. Enumerables: filter creates an array for you, so there is no need to create one outside of it and shovel the instance inside. In addition, I would call each element singular `doctor` instead of `doctors` to make it clear you are looking at a single doctor instance. You code could simply read:
+Doctor.all.filter do |doctor| 
+    doctor.specialty == specialty_string
+end
