@@ -1,13 +1,12 @@
 class Patient
 
-    attr_accessor :name, :age, :doctor, :impatience
+    attr_accessor :name, :age, :impatience
 
     @@all = []
 
-    def initialize(name, age, doctor)
+    def initialize(name, age)
         @name = name
         @age = age
-        @doctor = doctor
         @impatience = 0
         @@all << self
     end
@@ -22,9 +21,21 @@ class Patient
         #should print that the doctor will be ready soon and increase patient impatience by 1
     end
 
-    def change_doctors(new_doctor)
-        self.doctor = new_doctor
+    def appointments
+        Appointment.all.select{|doctor| doctor.patient == self}
     end
+
+    def doctors
+        self.appointments.map{|patient| patient.doctor}.uniq
+    end
+
+    def create_appointment(doctor_name)
+        Appointment.new(doctor_name, self)
+    end
+
+    # def change_doctors(new_doctor)
+    #     self.doctor = new_doctor
+    # end
 
 private
 
