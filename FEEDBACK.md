@@ -18,3 +18,10 @@ Looks very clean and no extra code written - good job!
 Doctor.all.filter do |doctor| 
     doctor.specialty == specialty_string
 end
+
+# Part 4 - Associations
+- Please address the prior feedback! For instance about `Doctor.find_by_speciality`
+- Otherwise `doctor.rb` looks good. One thing to make sure you're paying attention to is the wording of the deliverable. If it asks for a list of patients (not patient names) you should return an array of Patient instances, not names (as in your Part III Doctor#patients method)
+- Be careful that the variable you use to describe the element in your enumerables (ie map, filter, etc). In both `Doctor#appointments` and `Patient#appointments` , I would change what you're calling the element to what is is - an appointment. Check out the other methods you wrote as well to make updates. 
+- In `Patient#create_appointment` you should create a new appointment with a whole doctor instance, not just the name.
+- Overall fairly strong showing. There are things you should do like described above to make your code clearer for you and other folks reading it.  
