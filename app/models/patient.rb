@@ -22,15 +22,15 @@ class Patient
     end
 
     def appointments
-        Appointment.all.select{|doctor| doctor.patient == self}
+        Appointment.all.select{|app| app.patient == self}
     end
 
     def doctors
-        self.appointments.map{|patient| patient.doctor}.uniq
+        self.appointments.map{|app| app.doctor}.uniq
     end
 
-    def create_appointment(doctor_name)
-        Appointment.new(doctor_name, self)
+    def create_appointment(doctor_instance)
+        Appointment.new(doctor_instance, self)
     end
 
     # def change_doctors(new_doctor)

@@ -17,21 +17,19 @@ class Doctor
     end
 
     def self.find_by_speciality(specialty_string)
-        doctor_array = []
         Doctor.all.filter do |doctors| 
             if doctors.specialty == specialty_string
-                doctor_array << doctors.name
+               doctors.name
             end
         end
-        doctor_array
     end
 
     def appointments
-        Appointment.all.select{|patient| patient.doctor == self}
+        Appointment.all.select{|app| app.doctor == self}
     end
 
     def patients
-        self.appointments.map{|doctor| doctor.patient}.uniq
+        self.appointments.map{|app| app.patient}.uniq
     end
 
     # def patients
